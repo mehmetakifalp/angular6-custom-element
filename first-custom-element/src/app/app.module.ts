@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+
+import { NgModule, Injector } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { InputComponent } from './input/input.component';
+import { createCustomElement } from '@angular/elements';
+
 
 @NgModule({
   declarations: [
@@ -13,6 +16,17 @@ import { InputComponent } from './input/input.component';
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [],
+  entryComponents: [InputComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(private injector: Injector){
+    const input = createCustomElement(InputComponent, {injector});
+    customElements.define('app-input', input);
+  }
+
+  ngDoBootstrap(){}
+  
+
+ }
