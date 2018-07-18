@@ -3,7 +3,7 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 @Component({
   selector: 'app-input',
   template: `
-    <input type="text" name="name">
+    <input type="{{type}}" name="{{name}}">
   `,
   styles: [],
   encapsulation: ViewEncapsulation.Native
